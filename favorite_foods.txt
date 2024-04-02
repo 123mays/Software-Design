@@ -2,4 +2,10 @@ pasta
 ice cream 
 greek yogurt
 milk
+<<<<<<< HEAD
 cookies
+=======
+
+
+
+>>>>>>> a55b09a8ce6a8b0b393d6a6a5d0d6b757fe05abf
