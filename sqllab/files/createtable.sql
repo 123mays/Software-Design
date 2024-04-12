@@ -15,7 +15,7 @@ CREATE TABLE earthquakes (
   type text,
   depthError real,
   status text,
-  locationSource text,
+  locationSource text
 );
 
 
