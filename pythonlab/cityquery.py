@@ -4,7 +4,7 @@ def main():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="neiorukhm",
+        database="neiroukhm",
         user="neiroukhm",
         password="spring847eyebrow"
     )
