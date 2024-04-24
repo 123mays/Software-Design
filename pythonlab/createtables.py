@@ -6,8 +6,8 @@ def create_tables():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="neiroukhm",
-        user="neiroukhm",
+        database="mlepinski",
+        user="mlepinski",
         password="Spring847eyebrow"
     )
     
