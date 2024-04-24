@@ -23,13 +23,13 @@ def create_tables_and_load_data():
     copy_commands = [
         """
         COPY us_cities(city, state, population, latitude, longitude)
-        FROM '../us-cities-top-1k.csv' 
+        FROM './us-cities-top-1k.csv' 
         DELIMITER ',' 
         CSV HEADER;
         """,
         """
         COPY us_states(state_code, state_name, population)
-        FROM '../us-state-pop.csv' 
+        FROM './us-state-pop.csv' 
         DELIMITER ',' 
         CSV HEADER;
         """
