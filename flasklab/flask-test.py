@@ -24,7 +24,7 @@ def addition(num1, num2):
 
 @app.route('/pop/<abbrev>')
 def get_population(abbrev):
-conn = psycopg2.connect(
+    conn = psycopg2.connect(
         host="localhost",  # Update as per your DB host
         port=5221,         # Update as per your DB port
         database="neiroukhm",  # Update as per your DB name
