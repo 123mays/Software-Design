@@ -8,7 +8,7 @@ def create_tables():
         port=5432,
         database="neiroukhm",
         user="neiroukhm",
-        password="Spring847eyebro"
+        password="Spring847eyebrow"
     )
     
     # Create a cursor object using the cursor() method
