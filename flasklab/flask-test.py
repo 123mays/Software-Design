@@ -37,11 +37,11 @@ def get_population(abbrev):
     abbrev = abbrev.upper()
     cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
     result = cur.fetchone()
-        if result:
-            population = result[0]
-            return {'state': abbrev, 'population': population}
-        else:
-            return {'error': 'State not found'}, 404
+    if result:
+        population = result[0]
+        return {'state': abbrev, 'population': population}
+    else:
+        return {'error': 'State not found'}, 404
 
    
 if __name__ == '__main__':
