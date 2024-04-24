@@ -1,4 +1,5 @@
 import flask
+import psycopg2
 
 app = flask.Flask(__name__)
 
@@ -23,19 +24,26 @@ def addition(num1, num2):
 
 @app.route('/pop/<abbrev>')
 def get_population(abbrev):
-    with get_db_connection() as conn:
-        with conn.cursor() as cur:
-            # Execute query using the state abbreviation, ensuring it matches case in the DB
-            cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev.upper(),))
-            result = cur.fetchone()
-            if result:
-                return {'state': abbrev.upper(), 'population': result[0]}
-            else:
-                # Return an error message if the state is not found
-                return {'error': 'State not found'}, 404
-
+conn = psycopg2.connect(
+        host="localhost",  # Update as per your DB host
+        port=5221,         # Update as per your DB port
+        database="neiroukhm",  # Update as per your DB name
+        user="neiroukhm",  # Update as per your DB username
+        password="spring847eyebrow"  # Update as per your DB password
+    )
+    cur = conn.cursor()
     
+    # Ensure the abbreviation is in uppercase to match the database entries
+    abbrev = abbrev.upper()
+    cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
+    result = cur.fetchone()
+        if result:
+            population = result[0]
+            return {'state': abbrev, 'population': population}
+        else:
+            return {'error': 'State not found'}, 404
 
+   
 if __name__ == '__main__':
     my_port = 5221
     app.run(host='0.0.0.0', port = my_port) 
