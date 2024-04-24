@@ -20,6 +20,20 @@ def my_color(word1):
 def addition(num1, num2):
     result = int(num1) + int(num2)
     return str(result)
+
+@app.route('/pop/<abbrev>')
+def get_population(abbrev):
+    with get_db_connection() as conn:
+        with conn.cursor() as cur:
+            # Execute query using the state abbreviation, ensuring it matches case in the DB
+            cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev.upper(),))
+            result = cur.fetchone()
+            if result:
+                return {'state': abbrev.upper(), 'population': result[0]}
+            else:
+                # Return an error message if the state is not found
+                return {'error': 'State not found'}, 404
+
     
 
 if __name__ == '__main__':
