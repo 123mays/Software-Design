@@ -6,9 +6,9 @@ def create_tables():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="mlepinski",
-        user="mlepinski",
-        password="Spring847eyebrow"
+        database="neiroukhm",
+        user="neiroukhm",
+        password="spring847eyebrow"
     )
     
     # Create a cursor object using the cursor() method
