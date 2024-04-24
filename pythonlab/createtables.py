@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS us_cities;
-DROP TABLE IF EXISTS us_states;
 CREATE TABLE us_cities (
     city VARCHAR(100),
     state VARCHAR(100),
