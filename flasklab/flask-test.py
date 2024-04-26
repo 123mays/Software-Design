@@ -25,24 +25,26 @@ def addition(num1, num2):
 @app.route('/pop/<abbrev>')
 def get_population(abbrev):
     conn = psycopg2.connect(
-        host="localhost",  
-        port=5221,        
-        database="neiroukhm",  
-        user="neiroukhm", 
-        password="spring847eyebrow" 
+        host="localhost",
+        port=5221,
+        database="neiroukhm",
+        user="neiroukhm",
+        password="spring847eyebrow"
     )
-    cur = conn.cursor()
-    
-    abbrev = abbrev.upper()
-    cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
-    result = cur.fetchone()
-    if result:
-        population = result[0]
-        return {'state': abbrev, 'population': population}
-    else:
-        return {'error': 'State not found'}, 404
+    try:
+        cur = conn.cursor()
+        abbrev = abbrev.upper()
+        cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
+        result = cur.fetchone()
+        if result:
+            population = result[0]
+            return {'state': abbrev, 'population': population}
+        else:
+            return {'error': 'State not found'}, 404
+    finally:
+        cur.close()
+        conn.close()
 
-   
 if __name__ == '__main__':
     my_port = 5221
     app.run(host='0.0.0.0', port = my_port) 
