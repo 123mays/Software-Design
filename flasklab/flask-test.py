@@ -31,16 +31,17 @@ def get_population(abbrev):
         user="neiroukhm",
         password="spring847eyebrow"
     )
-    try:
-        cur = conn.cursor()
-        abbrev = abbrev.upper()
-        cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
-        result = cur.fetchone()
-        if result:
-            population = result[0]
-            return {'state': abbrev, 'population': population}
-        else:
-            return {'error': 'State not found'}, 404
+
+     cur = conn.cursor()
+     abbrev = abbrev.upper()
+     cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
+     result = cur.fetchone()
+    if result:
+        population = result[0]
+        return {'state': abbrev, 'population': population}
+    else:
+        return {'error': 'State not found'}, 404
+    return {'if statement didn't work'}
     cur.close()
     conn.close()
 
