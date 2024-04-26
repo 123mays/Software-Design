@@ -41,9 +41,8 @@ def get_population(abbrev):
             return {'state': abbrev, 'population': population}
         else:
             return {'error': 'State not found'}, 404
-    finally:
-        cur.close()
-        conn.close()
+    cur.close()
+    conn.close()
 
 if __name__ == '__main__':
     my_port = 5221
