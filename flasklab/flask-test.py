@@ -25,15 +25,14 @@ def addition(num1, num2):
 @app.route('/pop/<abbrev>')
 def get_population(abbrev):
     conn = psycopg2.connect(
-        host="localhost",  # Update as per your DB host
-        port=5221,         # Update as per your DB port
-        database="neiroukhm",  # Update as per your DB name
-        user="neiroukhm",  # Update as per your DB username
-        password="spring847eyebrow"  # Update as per your DB password
+        host="localhost",  
+        port=5221,        
+        database="neiroukhm",  
+        user="neiroukhm", 
+        password="spring847eyebrow" 
     )
     cur = conn.cursor()
     
-    # Ensure the abbreviation is in uppercase to match the database entries
     abbrev = abbrev.upper()
     cur.execute("SELECT population FROM us_states WHERE state_code = %s", (abbrev,))
     result = cur.fetchone()
