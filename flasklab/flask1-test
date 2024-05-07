@@ -1,0 +1,35 @@
+from flask import Flask, render_template
+import random
+
+app = Flask(__name__)
+
+@app.route('/')
+def welcome():
+    return render_template("index.html")
+
+@app.route('/rand/<low>/<high>')
+def rand(low, high):
+    # Convert string parameters from the URL to integers
+    low_int = int(low)
+    high_int = int(high)
+    num = random.randint(low_int, high_int)
+    return render_template("random.html", randNum=num)
+
+@app.route('/random_sentence')
+def random_sentence():
+    names = ['Alice', 'Alberto', 'Lily', 'James']
+    adjectives = ['Wise', 'Brave', 'Kind', 'Curious']
+    cities = ['Northfield', 'Tampa', 'Austin', 'New York']
+    years = ['1992', '2005', '1988', '1999']
+
+    name = random.choice(names)
+    adjective = random.choice(adjectives)
+    city = random.choice(cities)
+    year = random.choice(years)
+
+    sentence = f"{name} the {adjective} was born in {city} in {year}"
+    return render_template('random_sentence.html', sentence=sentence)
+
+if __name__ == '__main__':
+    my_port = 5221
+    app.run(host='0.0.0.0', port = my_port) 
