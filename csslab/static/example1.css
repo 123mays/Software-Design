@@ -1,0 +1,18 @@
+.my-class {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: blue;
+}
+
+.center-para {
+    text-align: center;
+    font-size: 18px;
+}
+
+.big-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
